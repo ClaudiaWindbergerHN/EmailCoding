@@ -1,0 +1,223 @@
+<!--POST
+var mmid = masterinfo.getID();
+var userId = user.attr("id");
+var allbannerlink ="";
+var nearest_store=user.attr("nearest_store");
+if(nearest_store == "Knightsbridge") {
+nearest_store ="KNIGHTSBRIDGE";
+} else if(nearest_store == "Bristol") {
+nearest_store ="BRISTOL";
+}  else if(nearest_store == "Leeds") {
+nearest_store ="LEEDS";
+}  else if(nearest_store == "Dublin") {
+nearest_store ="DUBLIN";
+}  else if(nearest_store == "Liverpool") {
+nearest_store ="LIVERPOOL";
+}  else if(nearest_store == "Edinburgh") {
+nearest_store ="EDINBURGH";
+}  else if(nearest_store == "Manchester") {
+nearest_store ="MANCHESTER";
+}  else if(nearest_store == "Birmingham") {
+nearest_store ="BIRMINGHAM";
+}
+
+var store_Count = 0;
+
+function check_sbit_set(multivalue, mask, stringvalue){
+     if(stringvalue == "BRISTOL" || stringvalue == "DUBLIN" || stringvalue == "EDINBURGH" || stringvalue == "LEEDS" || stringvalue == "MANCHESTER" || stringvalue == "KNIGHTSBRIDGE" || stringvalue == "BIRMINGHAM")
+        {
+                if ((multivalue & mask)||(multivalue.indexOf(stringvalue)!=-1)) 
+                {
+                     store_Count = store_Count + 1;
+                 }
+           return store_Count; 
+        }
+  }
+  
+function check_if_set(multivalue, mask, stringvalue){
+                if ((multivalue & mask)||(multivalue.indexOf(stringvalue)!=-1)) {
+                
+                     return 1; 
+            	} else { 
+            		return 0;
+            	}
+        }
+
+var OXO = 0;
+var PRISM= 0;
+var KNIGHTSBRIDGE = 0;
+var BRISTOL= 0;
+var BIRMINGHAM= 0;
+var EDINBURGH = 0;
+var LEEDS= 0;
+var MANCHESTER= 0;
+var LIVERPOOL= 0;
+var DUBLIN=0;
+var OXOSET = 0;
+var PRISMSET= 0;
+var KNIGHTSBRIDGESET = 0;
+var BRISTOLSET= 0;
+var BIRMINGHAMSET= 0;
+var EDINBURGHSET = 0;
+var LEEDSSET= 0;
+var LIVERPOOLSET= 0;
+var MANCHESTERSET= 0;
+var DUBLINSET=0;
+var S_BRISTOL=0;
+var S_BRISTOL_set=0;
+var S_BIRMINGHAM=0;
+var S_BIRMINGHAM_set=0;
+var S_DUBLIN=0;
+var S_DUBLIN_set=0;
+var S_EDINBURGH=0;
+var S_EDINBURGH_set=0;
+var S_LEEDS=0;
+var S_LEEDS_set=0;
+var S_LIVERPOOL=0;
+var S_LIVERPOOL_set=0;
+var S_MANCHESTER=0;
+var S_MANCHESTER_set=0;
+var S_KNIGHTSBRIDGE=0;
+var S_KNIGHTSBRIDGE_set=0;
+
+if(store_preference ){
+BIRMINGHAM = check_if_set(store_preference,1 << 0,"BIRMINGHAM");
+BRISTOL = check_if_set(store_preference,1 << 1,"BRISTOL");
+DUBLIN = check_if_set(store_preference,1 << 2,"DUBLIN");
+EDINBURGH = check_if_set(store_preference,1 << 3,"EDINBURGH");
+LEEDS = check_if_set(store_preference,1 << 4,"LEEDS");
+LIVERPOOL = check_if_set(store_preference,1 << 5,"LIVERPOOL");
+MANCHESTER = check_if_set(store_preference,1 << 6,"MANCHESTER");
+KNIGHTSBRIDGE = check_if_set(store_preference,1 << 7,"KNIGHTSBRIDGE");
+}
+
+if(store_preference ){
+	S_BRISTOL = check_sbit_set(store_preference,1 << 1,"BRISTOL");
+	S_BRISTOL_set = check_if_set(store_preference,1 << 1,"BRISTOL");
+	S_DUBLIN = check_sbit_set(store_preference,1 << 2,"DUBLIN");
+	S_DUBLIN_set= check_if_set(store_preference,1 << 2,"DUBLIN");
+	S_EDINBURGH = check_sbit_set(store_preference,1 << 3,"EDINBURGH");
+	S_EDINBURGH_set = check_if_set(store_preference,1 << 3,"EDINBURGH");
+	S_LEEDS = check_sbit_set(store_preference,1 << 4,"LEEDS");
+	S_LEEDS_set = check_if_set(store_preference,1 << 4,"LEEDS");
+    S_LIVERPOOL = check_sbit_set(store_preference,1 << 5,"LIVERPOOL");
+	S_LIVERPOOL_set = check_if_set(store_preference,1 << 5,"LIVERPOOL");
+	S_MANCHESTER = check_sbit_set(store_preference,1 << 6,"MANCHESTER");
+	S_MANCHESTER_set = check_if_set(store_preference,1 << 6,"MANCHESTER");
+	S_KNIGHTSBRIDGE = check_sbit_set(store_preference,1 << 7,"KNIGHTSBRIDGE");
+	S_KNIGHTSBRIDGE_set = check_if_set(store_preference,1 << 7,"KNIGHTSBRIDGE");
+    S_BIRMINGHAM = check_sbit_set(store_preference,1 << 0,"BIRMINGHAM");
+	S_BIRMINGHAM_set = check_if_set(store_preference,1 << 0,"BIRMINGHAM");
+}
+
+var PrefferedStore;
+if(S_KNIGHTSBRIDGE_set == 1){
+     PrefferedStore = PrefferedStore;
+} else if(S_LEEDS_set == 1){
+    PrefferedStore = "LEEDS";
+}  else if(S_MANCHESTER_set  == 1){
+    PrefferedStore = "MANCHESTER";
+} else if(S_EDINBURGH_set == 1){
+    PrefferedStore = "EDINBURGH";
+} else if(S_BRISTOL_set == 1){
+    PrefferedStore = "BRISTOL";
+}   else if(S_LIVERPOOL_set == 1){
+    PrefferedStore = "LIVERPOOL";
+} else if(S_BIRMINGHAM_set == 1){
+    PrefferedStore = "BIRMINGHAM";
+} else if(S_DUBLIN_set == 1){
+    PrefferedStore = "DUBLIN";
+} else {
+	PrefferedStore = PrefferedStore;
+}
+
+
+var loyalty_member=user.attr("loyalty_member");
+var dublinOnly = "off";
+var loyaltyOnly ="off";
+if(loyalty_member == "true"){
+loyaltyOnly = "on";
+}
+
+
+if(LEEDSSET == 1 || S_LEEDS_set || nearest_store=="LEEDS"){
+allbannerlink ="http://www.harveynichols.com/news/2016/09/07/big-beauty-bash-3/?store=leeds";
+}  
+else if(EDINBURGHSET == 1 || S_EDINBURGH_set || nearest_store=="EDINBURGH"){
+allbannerlink ="http://www.harveynichols.com/news/2016/09/16/big-beauty-bash-7/?store=edinburgh";
+} 
+else if(BIRMINGHAMSET == 1 || S_BIRMINGHAM_set || nearest_store=="BIRMINGHAM"){
+allbannerlink ="http://www.harveynichols.com/news/2016/09/16/big-beauty-bash/?store=birmingham";
+}
+else if(LIVERPOOLSET == 1 || S_LIVERPOOL_set || nearest_store=="LIVERPOOL"){
+allbannerlink ="http://www.harveynichols.com/news/2016/09/07/big-beauty-bash-2/?store=liverpool";
+} 
+else if(BRISTOLSET == 1 || S_BRISTOL_set || nearest_store=="BRISTOL"){
+allbannerlink ="http://www.harveynichols.com/news/2016/09/16/big-beauty-bash-6/?store=bristol";
+} 
+else if(DUBLINSET == 1 || S_DUBLIN_set || nearest_store=="DUBLIN"){
+allbannerlink ="http://www.harveynichols.com/news/2016/09/16/big-beauty-bash-5/?store=dublin";
+}
+
+ POST-->
+ 
+ 
+ 
+   <!--POST if (loyaltyOnly=="on"){ POST-->
+       <table width="15" border="0" align="center" cellpadding="0" cellspacing="0" class="resize314">
+        <tr>
+          <td width="15" style="line-height:15px"><img src="http://mediav2.harveynichols.com/assets/crm/emails/base/nspc.gif" height="15" style="display:block;" border="0" /></td>
+        </tr>
+      </table>
+          
+    <table width="640" border="0" align="center" cellpadding="0" cellspacing="0" class="w100">
+      <tr>
+        <td width="640" align="left" valign="top" bgcolor="#FFFFFF" style="font-family:Arial, Helvetica, Verdana, sans-serif; font-size:20px; text-align:center; font-weight:bold;"><table width="640" border="0" align="left" cellpadding="0" cellspacing="0" class="w100">
+          <tr>
+            <td width="640" align="left" valign="middle" bgcolor="#ffffff" style="font-family:Arial, Helvetica, Verdana, sans-serif; font-size:20px; text-align:center; font-weight:bold"><a href="https://www.harveynichols.com/hncustomer/account/login/?`trackingurl`" target="_blank" style="text-decoration:none;color:#FFFFFF;outline:none;"><img src="b-2.jpg" alt="REWARDS DOUBLE POINTS ENDS TODAY [ SIGN IN ]" width="640" height="133" border="0" style="display:block" class="w100" /></a></td>
+          </tr>
+        </table>
+      </td>
+      </tr>
+    </table>
+     
+      
+      <!--POST } else {  POST-->
+            <table width="15" border="0" align="center" cellpadding="0" cellspacing="0" class="resize314">
+              <tr>
+                <td width="15" style="line-height:15px"><img src="http://mediav2.harveynichols.com/assets/crm/emails/base/nspc.gif" height="15" style="display:block;" border="0" /></td>
+              </tr>
+            </table>
+            <table width="640" border="0" align="center" cellpadding="0" cellspacing="0" class="w100">
+      <tr>
+        <td width="640" align="left" valign="top" bgcolor="#FFFFFF" style="font-family:Arial, Helvetica, Verdana, sans-serif; font-size:20px; text-align:center; font-weight:bold;"><table width="640" border="0" align="left" cellpadding="0" cellspacing="0" class="w100">
+          <tr>
+            <td width="640" align="left" valign="middle" bgcolor="#ffffff" style="font-family:Arial, Helvetica, Verdana, sans-serif; font-size:20px; text-align:center; font-weight:bold"><a href="https://www.smarturl.it/lty160926?`trackingurl`" target="_blank" style="text-decoration:none;color:#FFFFFF;outline:none;"><img src="b-1.jpg" alt="REWARDS DOUBLE POINTS ENDS TODAY [ DOWNLOAD NOW ]" width="640" height="133" border="0" style="display:block" class="w100" /></a></td>
+          </tr>
+        </table>
+        
+      </td>
+      </tr>
+    </table>
+     <!--POST} POST--> 
+     
+     <!--POST if (MANCHESTERSET == 1 || S_MANCHESTER_set || nearest_store == "MANCHESTER"){ POST-->
+      
+            <table width="15" border="0" align="center" cellpadding="0" cellspacing="0" class="resize314">
+              <tr>
+                <td width="15" style="line-height:15px"><img src="http://mediav2.harveynichols.com/assets/crm/emails/base/nspc.gif" height="15" style="display:block;" border="0" /></td>
+              </tr>
+            </table>
+            <table width="640" border="0" align="center" cellpadding="0" cellspacing="0" class="w100">
+      <tr>
+        <td width="640" align="left" valign="top" bgcolor="#FFFFFF" style="font-family:Arial, Helvetica, Verdana, sans-serif; font-size:20px; text-align:center; font-weight:bold;"><table width="640" border="0" align="left" cellpadding="0" cellspacing="0" class="w100">
+          <tr>
+            <td width="640" align="left" valign="middle" bgcolor="#ffffff" style="font-family:Arial, Helvetica, Verdana, sans-serif; font-size:20px; text-align:center; font-weight:bold"><a href="http://www.harveynichols.com/news/2016/09/07/octobers-looking-good/?store=manchester&`trackingurl`" target="_blank" style="text-decoration:none;color:#FFFFFF;outline:none;"><img src="b-3.jpg" alt="THE SCIENCE OF SCENT [ READ MORE ]" width="640" height="133" border="0" style="display:block" class="w100" /></a></td>
+          </tr>
+        </table>
+        
+      </td>
+      </tr>
+    </table>
+   
+      <!--POST} POST-->       
