@@ -1,3 +1,8 @@
+After last banner table
+
+   </td>
+        </tr>
+      </table></td></tr></table></td></tr></table>
 <!--POST if(loyaltyBanner == "on") { POST-->
     <insert><id>302</id></insert>
  <!--POST } else { POST--><insert><id>323</id></insert><!--POST } POST--></td></tr></table></td></tr></table>
