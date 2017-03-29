@@ -158,23 +158,21 @@ allbannerlink ="http://www.harveynichols.com/news/2016/09/16/big-beauty-bash-6/?
 else if(DUBLINSET == 1 || S_DUBLIN_set || nearest_store=="DUBLIN"){
 allbannerlink ="http://www.harveynichols.com/news/2016/09/16/big-beauty-bash-5/?store=dublin";
 }
-
  POST-->
  
  
  
 <!--POST if (loyaltyOnly=="on"){ POST-->
-
 BANNER HERE
-     
 <!--POST } else {  POST-->
-
 BANNER HERE
-
 <!--POST} POST--> 
      
 <!--POST if (MANCHESTERSET == 1 || S_MANCHESTER_set || nearest_store == "MANCHESTER"){ POST-->
-      
 BANNER HERE
-   
-<!--POST} POST-->       
+
+<!--POST} POST-->     
+
+<!--POST if (KNIGHTSBRIDGESET == 1 || S_KNIGHTSBRIDGE_set || nearest_store == "KNIGHTSBRIDGE" || (nearest_store == null || nearest_store == "NONE")){ POST-->
+BANNER HERE
+<!--POST} POST-->    
